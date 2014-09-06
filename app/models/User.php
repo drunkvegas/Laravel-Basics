@@ -7,6 +7,9 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
+	public $timestamps = false; //Allows DB Entries to be made sans timestamp
+	protected $fillable = ['username', 'password']; //Tells Laravel that User/Pass are okay to be mass-assigned
+
 	use UserTrait, RemindableTrait;
 
 	/**
