@@ -49,11 +49,15 @@ Route::get('/', function()
 
 //Route Controller Method and Name
 
-Route::get('users', 'UsersController@index');
+// Route::get('users', 'UsersController@index');
 
-//Route for User Profile 
-Route::get('users/{username}', 'UsersController@show');
+// //Route for User Profile 
+// Route::get('users/{username}', 'UsersController@show');
 
+
+// RESOURCEFUL ROUTING //
+
+Route::resource('users', 'UsersController');
 
 
 
