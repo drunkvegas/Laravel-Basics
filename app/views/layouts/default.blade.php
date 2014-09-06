@@ -3,13 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Let's Learn // Users // User Profile</title>
+	<title>Let's Learn</title>
 	<link rel="stylesheet" href="">
 </head>
 <body>
 
-	<!-- DISPLAYS USERNAME FROM USERS TABLE -->
-	<h1>Hello, {{ $user->username }}</h1>
-
+	@yield('content')
+	
 </body>
-</html
+</html>
