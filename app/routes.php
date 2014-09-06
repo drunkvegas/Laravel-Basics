@@ -47,23 +47,15 @@ Route::get('/', function()
 
 });
 
-//Getting User View
-Route::get('users', function() 
-{
+//Route Controller Method and Name
 
-	$users = User::all();
+Route::get('users', 'UsersController@index');
 
-	//return View::make('users/index')->withUsers($users);
-	return View::make('users.index', ['users' => $users]); //Passing Var in 2nd Arg
-});
+//Route for User Profile 
+Route::get('users/{username}', 'UsersController@show');
 
-//Getting User Profile View
-Route::get('users/{username}', function($username)
-{
-	$user = User::whereUsername($username)->first();
 
-	return View::make('users.show', ['user' => $user]);
-});
+
 
 
 
