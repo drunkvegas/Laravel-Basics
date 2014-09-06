@@ -1,4 +1,8 @@
 <?php
 
-Route::get('/', 'PagesController@home'); //User Reqs HP reff'ing Controller w Method
-Route::get('about', 'PagesController@about'); 
+Route::get('/', function()
+{
+	$users = DB::table('users')->where('username', '!=', 'Sandra')->get();
+
+	return $users;
+});
