@@ -1,3 +1,6 @@
+## First Laravel Project 
+So this was my first Laravel project that I finished. Using Jeffrey Way's Laracast Videos made it insanely easy. If you need any guidance take a look at his site, or you can browse my commits. I made it a point to comment the code in order to full understand what's going on. If you have any questions feel free to message me here. Good luck!'
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
