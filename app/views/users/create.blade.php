@@ -11,7 +11,10 @@
 			{{ Form::text('username') }}
 			{{ $errors->first('username') }}
 		</div>
-
+		<div>
+			{{ Form::label('email', 'Email: ') }}
+			{{ Form::email('email') }}
+		</div>
 		<div>
 			{{ Form::label('password', 'Password: ') }}
 			{{ Form::password('password') }}

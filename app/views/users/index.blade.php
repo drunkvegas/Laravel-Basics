@@ -16,7 +16,7 @@
 
 	@else
 
-		<p>No users, dawg.</p>\
+		<p>No users, dawg.</p>
 
 	@endif
 	
