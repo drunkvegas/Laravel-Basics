@@ -7,9 +7,11 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	public $timestamps = false; //Allows DB Entries to be made sans timestamp
+	//Allows DB Entries to be made sans timestamp
+	public $timestamps = false; 
 	
-	protected $fillable = ['username', 'password']; //Tells Laravel that User/Pass are okay to be mass-assigned
+	//Tells Laravel that User/Pass are okay to be mass-assigned
+	protected $fillable = ['username', 'password']; 
 
 	//Validation Rule Logic
 	public static $rules = [
@@ -17,7 +19,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'password' => 'required'
 	];
 
-	public static $errors;
+	public $errors;
 
 	use UserTrait, RemindableTrait;
 
@@ -35,15 +37,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
-	public static function isValid($data) 
+	public function isValid() 
 	{
-		$validation = Validator::make($data, static::$rules);
+		$validation = Validator::make($this->attributes, static::$rules);
 
 		if ($validation->passes())return true;
 
-		static::$errors = $validation->errors();
-		
+		$this->errors = $validation->messages();
+
 		return false;
 
-		}
+	}
 }

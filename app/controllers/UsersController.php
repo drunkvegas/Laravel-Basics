@@ -2,41 +2,49 @@
 
 class UsersController extends \BaseController {
 
-	public function index()
+	protected $user;
+
+	public function __construct(User $user)
 	{
-
-		$users = User::all();
-
-		//return View::make('users/index')->withUsers($users);
-		return View::make('users.index', ['users' => $users]); //Passing Var in 2nd Arg
+		$this->user = $user;
 	}
 
-	public function show($username) //Pass wildcard for var, if not error
+	public function index()
 	{
-		$user = User::whereUsername($username)->first();
+		$users = $this->user->all();
+
+		//return View::make('users/index')->withUsers($users);
+
+		//Passing Var in 2nd Arg
+		return View::make('users.index', ['users' => $users]);
+	}
+
+	//Pass wildcard for var, if not error
+	public function show($username) 
+	{
+		$user = $this->user->whereUsername($username)->first();
 
 		return View::make('users.show', ['user' => $user]);
 	}
+
 
 	public function create()
 	{
 		return View::make('users.create');
 	}
 
+
 	public function store()
 	{
-
-		if ( ! User::isValid(Input::all()))
+		$input = Input::all();
+		
+		if ( ! $this->user->fill($input)->isValid())
 		{
-			return Redirect::back()->withInput()->withErrors(User::$errors);
+			return Redirect::back()->withInput()->withErrors($this->user->errors);
 		}
 
-		
-		$user = new User;
-		// Inserts into DB what was inputted into said fields
-		$user->username = Input::get('username');
-		$user->password = Hash::make(Input::get('password'));
-		$user->save();
+		$this->user->password = Hash::make($this->user->password);
+		$this->user->save();
 
 		return Redirect::route('users.index');
 

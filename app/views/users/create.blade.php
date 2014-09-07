@@ -7,14 +7,14 @@
 	{{ Form::open(['route' => 'users.store']) }}
 
 		<div>
-			{{ Form::label('username', 'Username') }}
+			{{ Form::label('username', 'Username ') }}
 			{{ Form::text('username') }}
 			{{ $errors->first('username') }}
 		</div>
 
 		<div>
-			{{ Form::label('password', 'Password') }}
-			{{ Form::input('password', 'Password') }}
+			{{ Form::label('password', 'Password: ') }}
+			{{ Form::password('password') }}
 			{{ $errors->first('password') }}
 		</div>
 
