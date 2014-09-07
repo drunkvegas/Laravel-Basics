@@ -9,11 +9,13 @@
 		<div>
 			{{ Form::label('username', 'Username') }}
 			{{ Form::text('username') }}
+			{{ $errors->first('username') }}
 		</div>
 
 		<div>
 			{{ Form::label('password', 'Password') }}
-			{{ Form::input('password', 'Input Password') }}
+			{{ Form::input('password', 'Password') }}
+			{{ $errors->first('password') }}
 		</div>
 
 		<div>

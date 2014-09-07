@@ -25,6 +25,13 @@ class UsersController extends \BaseController {
 
 	public function store()
 	{
+
+		if ( ! User::isValid(Input::all()))
+		{
+			return Redirect::back()->withInput()->withErrors(User::$errors);
+		}
+
+		
 		$user = new User;
 		// Inserts into DB what was inputted into said fields
 		$user->username = Input::get('username');
